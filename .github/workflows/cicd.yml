@@ -1,6 +1,6 @@
 name: CI/CD
 
-run-name: Building & Deploying - ${{ github.event.head_commit.message }}
+run-name: CI/CD - ${{ github.event.head_commit.message }}
 
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
         run: |
           mkdir -p dist && mkdir -p dist/plugins
           cp build/smedley_kernel/${{ matrix.build_type }}/smedley_kernel.* dist
-          cp build/smedley_kernel/${{ matrix.build_type }}/run_tests.* dist
+          cp build/smedley_kernel/${{ matrix.build_type }}/smedley_run_tests.* dist
           cp -r build/smedley_kernel/docs dist/
           cp build/plugins/v2up/${{ matrix.build_type }}/v2up.* dist/plugins
           cp plugins/v2up/v2up.toml dist/plugins
@@ -65,7 +65,7 @@ jobs:
           name: ${{ env.artifact_name }}
 
       - name: Run Tests
-        run: ./run_tests.exe
+        run: ./smedley_run_tests.exe
 
   deploy-docs:
     name: Deploy Docs to Github Pages
