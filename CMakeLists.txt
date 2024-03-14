@@ -12,6 +12,7 @@ if(NOT V2_GAME_DIR)
 endif()
 
 set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY TRUE)
+#set(BUILD_DOC ON)
 
 project ("smedley")
 
@@ -23,6 +24,8 @@ FetchContent_Declare(
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
+
+include_directories("include/lua" "include/toml")
 
 # Include sub-projects.
 add_subdirectory ("smedley_kernel")

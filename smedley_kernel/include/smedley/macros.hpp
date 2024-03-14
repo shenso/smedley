@@ -107,7 +107,7 @@ struct _identity_helper<R(Arg)>
     }
 
 #define DEFINE_MEMBER_FN_4(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name, arg3_type, arg3_name, arg4_type, arg4_name)  \
-    DEFINE_MEMBER_FN_3_BASE(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name, arg3_type, arg3_name, arg4_type, arg4_name) \
+    DEFINE_MEMBER_FN_4_BASE(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name, arg3_type, arg3_name, arg4_type, arg4_name) \
     static constexpr uintptr_t fn_name##_address = addr;
 
 #define DEFINE_MEMBER_FN_THISCALL_0_BASE(fn_name, ret_type, addr)   \
@@ -122,8 +122,8 @@ struct _identity_helper<R(Arg)>
         return (reinterpret_cast<_empty *>(this)->*fn)();           \
     }
 
-#define DEFINE_MEMBER_FN_THISCALL_0(fn_name, ret_type, addr, arg1_type, arg1_name) \
-    DEFINE_MEMBER_FN_THISCALL_0_BASE(fn_name, ret_type, addr, arg1_type, arg1_name)         \
+#define DEFINE_MEMBER_FN_THISCALL_0(fn_name, ret_type, addr)  \
+    DEFINE_MEMBER_FN_THISCALL_0_BASE(fn_name, ret_type, addr) \
     static constexpr uintptr_t fn_name##_address = addr;
 
 #define DEFINE_MEMBER_FN_THISCALL_1_BASE(fn_name, ret_type, addr, arg1_type, arg1_name) \
@@ -256,6 +256,17 @@ struct _identity_helper<R(Arg)>
 #define DEFINE_MEMBER_FN_EAX_1(fn_name, ret_type, addr, arg1_type, arg1_name)  \
     DEFINE_MEMBER_FN_EAX_1_BASE(fn_name, ret_type, addr, arg1_type, arg1_name) \
     static constexpr uintptr_t fn_name##_address = addr;
+
+#define DEFINE_FN_EDI_0_BASE(fn_name, ret_type, addr, arg1_type, arg1_name) \
+    ret_type fn_name(arg1_type arg1_name)                                   \
+    {                                                                       \
+        const uintptr_t _addr = memory::Map::base_addr + addr;              \
+        __asm mov edi, arg1_name __asm call _addr                           \
+    }
+
+#define DEFINE_FN_EDI_0(fn_name, ret_type, addr, arg1_type, arg1_name)  \
+    DEFINE_FN_EDI_0_BASE(fn_name, ret_type, addr, arg1_type, arg1_name) \
+    constexpr uintptr_t fn_name##_address = addr;
 
 #define DEFINE_MEMBER_FN_EDI_0_BASE(fn_name, ret_type, addr)   \
     ret_type fn_name()                                         \
@@ -445,4 +456,55 @@ struct _identity_helper<R(Arg)>
 
 #define DEFINE_MEMBER_FN_EDI_0_RET_1(fn_name, ret_type, addr)  \
     DEFINE_MEMBER_FN_EDI_0_RET_1_BASE(fn_name, ret_type, addr) \
-    static constexpr uintptr_t fn_name##_address = addr;   
+    static constexpr uintptr_t fn_name##_address = addr;
+
+#define DEFINE_MEMBER_FN_0_THIS_IN_STACK_BASE(fn_name, ret_type, addr) \
+    ret_type fn_name()                                            \
+    {                                                             \
+        const uintptr_t _addr = memory::Map::base_addr + addr;    \
+        __asm push this __asm call _addr   \
+    }
+
+#define DEFINE_MEMBER_FN_0_THIS_IN_STACK(fn_name, ret_type, addr)  \
+    DEFINE_MEMBER_FN_0_THIS_IN_STACK_BASE(fn_name, ret_type, addr) \
+    static constexpr uintptr_t fn_name##_address = addr;
+
+#define DEFINE_FN_2_BASE(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name) \
+    ret_type fn_name(arg1_type arg1_name, arg2_type arg2_name)                                \
+    {                                                                                         \
+        const uintptr_t _addr = memory::Map::base_addr + addr;                                \
+        typedef ret_type _##fn_name##_type(arg1_type arg1_name, arg2_type arg2_name);         \
+        _##fn_name##_type *fn = (_##fn_name##_type *)_addr;                                   \
+        return fn(arg1_name, arg2_name);                                                      \
+    }
+
+#define DEFINE_FN_2(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name)  \
+    DEFINE_FN_2_BASE(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name) \
+    constexpr uintptr_t fn_name##_address = addr;
+
+#define DEFINE_FN_3_BASE(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name, arg3_type, arg3_name) \
+    ret_type fn_name(arg1_type arg1_name, arg2_type arg2_name, arg3_type arg3_name)                                 \
+    {                                                                                                               \
+        const uintptr_t _addr = memory::Map::base_addr + addr;                                                      \
+        typedef ret_type _##fn_name##_type(arg1_type arg1_name, arg2_type arg2_name, arg3_type arg3_name);          \
+        _##fn_name##_type *fn = (_##fn_name##_type *)_addr;                                                         \
+        return fn(arg1_name, arg2_name, arg3_name);                                                                 \
+    }
+
+#define DEFINE_FN_3(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name, arg3_type, arg3_name)  \
+    DEFINE_FN_3_BASE(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name, arg3_type, arg3_name) \
+    constexpr uintptr_t fn_name##_address = addr;
+
+#define DEFINE_FN_4_BASE(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name, arg3_type, arg3_name, arg4_type, arg4_name) \
+    ret_type fn_name(arg1_type arg1_name, arg2_type arg2_name, arg3_type arg3_name, arg4_type arg4_name)                                  \
+    {                                                                                                                                     \
+        const uintptr_t _addr = memory::Map::base_addr + addr;                                                                            \
+        typedef ret_type (*_##fn_name##_type)(arg1_type arg1_name, arg2_type arg2_name, arg3_type arg3_name, arg4_type arg4_name);        \
+        _##fn_name##_type fn = *(_##fn_name##_type *)&_addr;                                                                              \
+        return fn(arg1_name, arg2_name, arg3_name, arg4_name);                                                                            \
+    }
+
+#define DEFINE_FN_4(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name, arg3_type, arg3_name, arg4_type, arg4_name)  \
+    DEFINE_FN_4_BASE(fn_name, ret_type, addr, arg1_type, arg1_name, arg2_type, arg2_name, arg3_type, arg3_name, arg4_type, arg4_name) \
+    constexpr uintptr_t fn_name##_address = addr;
+

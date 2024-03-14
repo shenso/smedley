@@ -80,7 +80,7 @@ namespace smedley::sstd
 
         friend bool operator==(const basic_string<T> &lhs, const basic_string<T> &rhs)
         {
-            return Traits::compare(lhs.c_str(), rhs.c_str(), std::max(lhs.size(), rhs.size())) == 0;
+            return Traits::compare(lhs.c_str(), rhs.c_str(), (std::max)(lhs.size(), rhs.size())) == 0;
         }
     };
 

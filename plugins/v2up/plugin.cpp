@@ -1,24 +1,33 @@
 #include <smedley/plugin.hpp>
 #include <smedley/eventregistry.hpp>
 #include <smedley/events/console.hpp>
+#include <smedley/clausewitz/lua.hpp>
 #include <smedley/std/string.hpp>
 #include <smedley/std/vector.hpp>
 #include <smedley/v2/console.hpp>
 #include <smedley/v2/gamestate.hpp>
 #include <smedley/v2/db/culture.hpp>
+#include <lua.hpp>
 #include <functional>
 #include <sstream>
 
 namespace v2up
 {
-
-    namespace events = smedley::events;
-    namespace sstd = smedley::sstd;
-    namespace v2 = smedley::v2;
+    using namespace smedley;
 
     v2::CConsoleCmd::SResult OnCommand(const sstd::vector<sstd::string> &argv)
     {
-        return v2::CConsoleCmd::SResult("Hello, world!");
+        int result;
+        auto L = *clausewitz::GetLuaState(0);
+
+        luaL_loadstring(L, "return 5 + 7");
+        result = lua_pcall(L, 0, 1, 0);
+        if (result == 0) {
+            const char *result = lua_tolstring(L, -1, nullptr);
+            return v2::CConsoleCmd::SResult(result);
+        } else {
+            return v2::CConsoleCmd::SResult("Failed to evaluate lua!");
+        }
     }
 
     class Plugin : public smedley::Plugin

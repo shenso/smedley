@@ -312,7 +312,7 @@ namespace smedley::v2
         /// @returns if the loan was taken successfully?
         inline DEFINE_MEMBER_FN_2(TakeLoan, bool, 0x00122910, bool, param_1, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), amount);
         inline DEFINE_MEMBER_FN_2_RET_ESI(TakeLoanFrom, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x00122820, const CCountryTag &, creditor_tag, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), amount);
-        inline DEFINE_MEMBER_FN_1(UpdateCapital, void, 0x0010e540);
+        inline DEFINE_MEMBER_FN_0_THIS_IN_STACK(UpdateCapital, void, 0x0010e540);
         //inline DEFINE_MEMBER_FN_ESI_0(UpdateOverlord, void, 0x00119920);
         inline DEFINE_MEMBER_FN_0(Westernize, void, 0x00142370);
 

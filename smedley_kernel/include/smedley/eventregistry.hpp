@@ -20,7 +20,7 @@ namespace smedley
         LOW = 1 << 10,
         NORMAL = 1 << 15,
         HIGH = 1 << 20,
-        HIGHEST = std::numeric_limits<uint32_t>::max(),
+        HIGHEST = (std::numeric_limits<uint32_t>::max)(),
     };
 
     /**

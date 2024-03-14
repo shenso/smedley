@@ -7,11 +7,11 @@ FILE(GLOB_RECURSE kernel_sources src/*.cpp)
 FILE(GLOB_RECURSE test_sources tests/*.cpp)
 
 # include directories
-include_directories("include" "include/smedley")
+include_directories("include/smedley")
 
 # add sources
 add_library (smedley_kernel SHARED ${kernel_sources})
-target_compile_definitions(smedley_kernel PRIVATE SMEDLEY_KERNEL)
+target_compile_definitions(smedley_kernel PRIVATE SMEDLEY_KERNEL LUA_BUILD_AS_DLL LUA_LIB)
 
 # setup testing
 enable_testing()
