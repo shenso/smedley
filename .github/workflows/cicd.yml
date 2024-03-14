@@ -23,10 +23,11 @@ jobs:
       - name: Generate Build Files
         run: |
           cmake -DBUILD_DOC=ON -DCMAKE_GENERATOR_PLATFORM=WIN32 -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -G "Visual Studio 17 2022" -B build 
+          dir build
 
       - name: Build Objects
         run: |
-          cmake --build build --config ${{ matrix.build_type }} 
+          cmake --build build --config ${{ matrix.build_type }} -DBUILD_DOC=ON
 
       - name: Prepare Artifact
         run: |
