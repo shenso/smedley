@@ -24,14 +24,10 @@ jobs:
         run: choco install doxygen.install
 
       - name: Generate Build Files
-        run: |
-          cmake -DBUILD_DOC=ON -DCMAKE_GENERATOR_PLATFORM=WIN32 -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -G "Visual Studio 17 2022" -B build 
-          tree build
+        run: cmake -DBUILD_DOC=ON -DCMAKE_GENERATOR_PLATFORM=WIN32 -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -G "Visual Studio 17 2022" -B build 
 
       - name: Build Objects
-        run: |
-          cmake --build build --config ${{ matrix.build_type }}
-          tree build
+        run: cmake --build build --config ${{ matrix.build_type }}
 
       - name: Prepare Artifact
         run: |
@@ -61,4 +57,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/smedley_kernel/docs/html
+          publish_dir: ./dist/docs/html
