@@ -35,6 +35,9 @@ jobs:
           cp build/smedley_kernel/${{ matrix.build_type }}/smedley_kernel.dll dist
           cp -r build/smedley_kernel/docs dist/
           cp build/plugins/v2up/${{ matrix.build_type }}/v2up.dll dist/plugins
+          cp plugins/v2up/v2up.toml dist/plugins
+          cp LICENSE.txt dist
+          cp README.md dist
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -57,4 +60,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/docs/html
+          publish_dir: ./docs/html
