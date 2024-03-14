@@ -42,7 +42,7 @@ int lua_pcall(lua_State *L, int nargs, int nresults, int errfunc)
 
 int luaL_loadstring(lua_State *L, const char *s)
 {
-    const uintptr_t _addr = memory::Map::base_addr + lua::;
+    const uintptr_t _addr = memory::Map::base_addr + lua::addresses::luaL_loadstring;
     typedef int _luaL_loadstring_type(lua_State * L, const char *s);
     _luaL_loadstring_type **fn = (_luaL_loadstring_type **)_addr;
     return (*fn)(L, s);
