@@ -32,7 +32,7 @@ jobs:
         run: |
           mkdir -p dist && mkdir -p dist/plugins
           cp build/smedley_kernel/${{ matrix.build_type }}/smedley_kernel.dll dist
-          cp -r build/smedley_kernel/docs dist/docs
+          cp -r build/smedley_kernel/docs dist/
           cp build/plugins/v2up/${{ matrix.build_type }}/v2up.dll dist/plugins
 
       - name: Upload Artifact
