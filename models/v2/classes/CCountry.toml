@@ -1,0 +1,11 @@
+name = "CCountry"
+
+[[fns]]
+name = "AddAcceptedCulture"
+ret = "void"
+offset = 0x00122310
+this = "esi"
+
+    [[fns.args]]
+    arg_type = 'CCulture *'
+    name = 'culture'

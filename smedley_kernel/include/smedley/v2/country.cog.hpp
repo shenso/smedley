@@ -270,13 +270,9 @@ namespace smedley::v2
         from codegen import print_class_model_fns
         print_class_model_fns('./models/v2/classes/CCountry.toml') 
         ]]]*/
-        void AddAcceptedCulture(CCulture * culture)
-        {
-        const uintptr_t _addr = memory::Map::base_addr + 0x122310;
-        __asm mov esi, this __asm push culture __asm call _addr
-        }
         //[[[end]]]
 
+        DEFINE_MEMBER_FN_ESI_1(AddAcceptedCulture, void, 0x00122310, CCulture *, culture);
         // TODO: test below:
         inline DEFINE_MEMBER_FN_EDI_4(AddCasusBelli, void, 0x00135fc0, const CCountryTag &, target, const sstd::string &, cb_tag, int, months, bool, send_message);
         inline DEFINE_MEMBER_FN_ESI_2(AddLeader, void, 0x0010e760, CLeader *, leader, bool, add_to_history);

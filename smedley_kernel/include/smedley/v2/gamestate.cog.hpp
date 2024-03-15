@@ -138,11 +138,6 @@ namespace smedley::v2
         from codegen import print_class_model_fns
         print_class_model_fns('./models/v2/classes/CCurrentGameState.toml')
         ]]]*/
-        static CCurrentGameState * instance()
-        {
-        const uintptr_t _addr = memory::Map::base_addr + 0xe588e8;
-        return *(reinterpret_cast<CCurrentGameState **>(_addr));
-        }
         // [[[end]]]
     };
 
