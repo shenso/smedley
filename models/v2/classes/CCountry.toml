@@ -3,9 +3,390 @@ name = "CCountry"
 [[fns]]
 name = "AddAcceptedCulture"
 ret = "void"
+callconv = "__stdcall"
 offset = 0x00122310
 this = "esi"
 
     [[fns.args]]
-    arg_type = 'CCulture *'
+    argtype = 'const CCulture &'
     name = 'culture'
+
+[[fns]]
+name = "AddCasusBelli"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00135fc0
+this = "edi"
+
+    [[fns.args]]
+    argtype = 'const CCountryTag &'
+    name = 'target'
+
+    [[fns.args]]
+    argtype = 'const sstd::string &'
+    name = 'cb_tag'
+
+    [[fns.args]]
+    argtype = 'int'
+    name = 'months'
+
+    [[fns.args]]
+    argtype = 'bool'
+    name = 'send_message'
+
+[[fns]]
+name = "AddControlledProvince"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x0010e250
+this = "esi"
+
+    [[fns.args]]
+    argtype = "int"
+    name = "provinceId"
+
+[[fns]]
+name = "AddLeader"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x0010e760
+this = "esi"
+
+    [[fns.args]]
+    argtype = "CLeader &"
+    name = "leader"
+
+    [[fns.args]]
+    argtype = "bool"
+    name = "add_to_history"
+
+[[fns]]
+name = "AddPrestige"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x001341a0
+this = "esi"
+
+    [[fns.args]]
+    argtype = "clausewitz::CFixedPoint"
+    name = "delta"
+
+[[fns]]
+name = "AddTimedModifier"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x001114d0
+
+    [[fns.args]]
+    argtype = "sstd::string"
+    name = "modifier_tag"
+
+    [[fns.args]]
+    argtype = "int"
+    name = "days"
+
+[[fns]]
+name = "AddToSphere"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00133e50
+
+    [[fns.args]]
+    argtype = "const CCountryTag &"
+    name = "target"
+    reg = "esi"
+
+[[fns]]
+name = "AddUnit"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00113c80
+this = "edi"
+
+    [[fns.args]]
+    argtype = "CUnit &"
+    name = "unit"
+    reg = "eax"
+
+[[fns]]
+name = "Annex"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00118620
+
+    [[fns.args]]
+    argtype = "const CCountryTag &"
+
+    [[fns.args]]
+    argtype = "const CCountryTag &"
+    name = "target"
+
+[[fns]]
+name = "AnnexProvinces"
+ret = "void"
+static = true
+callconv = "__stdcall"
+offset = 0x000b5a90
+
+    [[fns.args]]
+    argtype = "const sstd::vector<int> &"
+    name = "provinces"
+
+    [[fns.args]]
+    argtype = "const CCountryTag &"
+    name = "target"
+
+    [[fns.args]]
+    argtype = "CEU3Date *"
+
+    [[fns.args]]
+    argtype = "bool"
+
+    [[fns.args]]
+    argtype = "const CCountryTag &"
+    name = "remove_core"
+
+[[fns]]
+name = "Break"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00116630
+
+    [[fns.args]]
+    argtype = "CRebelFaction &"
+    name = "faction"
+
+[[fns]]
+name = "BreakAlliances"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00117250
+doc = "Not 100% sure that the name is accurate"
+
+[[fns]]
+name = "CalcFactoryCost"
+ret = "clausewitz::fixed_point<int64_t,48,15>"
+retbuf = "esi"
+callconv = "__stdcall"
+offset = 0x000daa10
+this = "edi"
+
+    [[fns.args]]
+    argtype = "const CBuilding &"
+    name = "building"
+    reg = "ecx"
+
+    [[fns.args]]
+    argtype = "bool"
+
+[[fns]]
+name = "CalcGovernmentNeedForGood"
+ret = "clausewitz::fixed_point<int64_t,48,15>"
+retbuf = "esi"
+callconv = "__stdcall"
+offset = 0x00139760
+this = "eax"
+
+    [[fns.args]]
+    argtype = "int"
+    name = "good_type_idx"
+
+[[fns]]
+name = "CalcLoanLimitFrom"
+ret = "clausewitz::fixed_point<int64_t,48,15>"
+retbuf = 1
+callconv = "__stdcall"
+offset = 0x001225a0
+this = "eax"
+
+    [[fns.args]]
+    argtype = "CCountryTag"
+    name = "tag"
+
+[[fns]]
+name = "CalcPercentageOfTaxableIncome"
+ret = "clausewitz::fixed_point<int64_t,48,15>"
+retbuf = "esi"
+callconv = "__stdcall"
+offset = 0x0012b610
+
+    [[fns.args]]
+    argtype = "const sstd::vector<clausewitz::fixed_point<int64_t,48,15>> &"
+    name = "tax_settings"
+
+[[fns]]
+name = "CalcRemainingInputsForBuilding"
+ret = "CGoodsPool"
+retbuf = 3
+callconv = "__stdcall"
+offset = 0x000dabf0
+this = "edi"
+
+    [[fns.args]]
+    argtype = "const CBuilding &"
+    name = "building"
+
+    [[fns.args]]
+    argtype = "const CGoodsPool &"
+    name = "inputs_needed"
+
+[[fns]]
+name = "CanTakeLoanFrom"
+ret = "bool"
+callconv = "__stdcall"
+offset = 0x00123130
+
+    [[fns.args]]
+    argtype = "CCountryTag"
+    name = "tag"
+
+[[fns]]
+name = "ChangeCapital"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x0010e4c0
+this = "edi"
+
+    [[fns.args]]
+    argtype = "int"
+    name = "province_id"
+
+    [[fns.args]]
+    argtype = "bool"
+    name = "add_to_history"
+
+[[fns]]
+name = "ChangeGovernment"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00113a90
+this = "esi"
+
+    [[fns.args]]
+    argtype = "const CGovernment &"
+    name = "government"
+
+    [[fns.args]]
+    argtype = "bool"
+
+    [[fns.args]]
+    argtype = "void *"
+
+    [[fns.args]]
+    argtype = "bool"
+
+[[fns]]
+name = "ClearIncomingAndExpenses"
+ret = "void"
+callconv = "__stdcall"
+access = "protected"
+offset = 0x0011fb60
+this = "eax"
+
+[[fns]]
+name = "ConstructStateBuilding"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x0012c6b0
+
+    [[fns.args]]
+    argtype = "CBuilding &"
+    name = "building"
+
+    [[fns.args]]
+    argtype = "CState &"
+    name = "state"
+
+[[fns]]
+name = "DailyUpdate"
+ret = "void"
+callconv = "__stdcall"
+access = "protected"
+offset = 0x00108590
+
+[[fns]]
+name = "DeclareAsBadDebtor"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x001241f0
+
+[[fns]]
+name = "DelayedEvent"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00140a70 
+
+    [[fns.args]]
+    argtype = "CEvent &"
+    name = "event"
+
+    [[fns.args]]
+    argtype = "CEventScope &"
+    name = "scope"
+
+    [[fns.args]]
+    argtype = "int"
+    name = "days"
+
+[[fns]]
+name = "DiscoverInvention"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00102090
+
+    [[fns.args]]
+    argtype = "CInvention &"
+    name = "invention"
+
+    [[fns.args]]
+    argtype = "bool"
+
+[[fns]]
+name = "DismantleSphere"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x001340a0
+this = "edi"
+
+[[fns]]
+name = "GetAllianceDiplomaticValue"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x0043ec10
+
+    [[fns.args]]
+    argtype = "CCountry &"
+    name = "player"
+
+    [[fns.args]]
+    argtype = "int &"
+    name = "out_val"
+
+    [[fns.args]]
+    argtype = "sstd::string &"
+    name = "out_str"
+
+#####################################
+#               GETTERS             #
+#####################################
+[[fns]]
+name = "daily_research_points"
+ret = "clausewitz::CFixedPoint"
+retbuf = "edi"
+callconv = "__thiscall"
+offset = 0x00138150
+this = "ecx"
+
+[[fns]]
+name = "debt"
+ret = "clausewitz::fixed_point<int64_t,48,15>"
+callconv = "__stdcall"
+offset = 0x00123880
+
+[[fns]]
+name = "tariff_efficiency"
+ret = "clausewitz::fixed_point<int64_t,48,15>"
+retbuf = 1
+callconv = "__stdcall"
+offset = 0x001339d0
+this = "edi"

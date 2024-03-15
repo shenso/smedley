@@ -268,31 +268,9 @@ namespace smedley::v2
     public:
         /*[[[cog
         from codegen import print_class_model_fns
-        print_class_model_fns('./models/v2/classes/CCountry.toml') 
+        print_class_model_fns('./models/v2/classes/CCountry.toml', access='public') 
         ]]]*/
         //[[[end]]]
-
-        DEFINE_MEMBER_FN_ESI_1(AddAcceptedCulture, void, 0x00122310, CCulture *, culture);
-        // TODO: test below:
-        inline DEFINE_MEMBER_FN_EDI_4(AddCasusBelli, void, 0x00135fc0, const CCountryTag &, target, const sstd::string &, cb_tag, int, months, bool, send_message);
-        inline DEFINE_MEMBER_FN_ESI_2(AddLeader, void, 0x0010e760, CLeader *, leader, bool, add_to_history);
-        inline DEFINE_MEMBER_FN_ESI_1(AddPrestige, void, 0x001341a0, clausewitz::CFixedPoint, delta);
-        inline DEFINE_MEMBER_FN_2(AddTimedModifier, void, 0x001114d0, sstd::string, modifier_tag, int, days);
-        inline DEFINE_MEMBER_FN_1_ESI(AddToSphere, void, 0x00133e50, const CCountryTag &, target);
-        inline DEFINE_MEMBER_FN_EDI_EAX_0(AddUnit, void, 0x00113c80, CUnit *, unit);
-        inline DEFINE_MEMBER_FN_2(Annex, void, 0x00118620, const CCountryTag *, remove_core_from, CCountryTag, target);
-        inline DEFINE_MEMBER_FN_1(Break, void, 0x00116630, CRebelFaction *, faction);
-        DEFINE_MEMBER_FN_EDI_0_RET_EAX(CalcDebt, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x00123880);
-        inline DEFINE_MEMBER_FN_EDI_ECX_1_RET_ESI(CalcFactoryCost, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x000daa10, const CBuilding &, building, bool, add_owner_cost);
-        inline DEFINE_MEMBER_FN_EAX_ESI_1_RET_ESI(CalcGovernmentNeedForGood, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x00139760, int, goods_type);
-        inline DEFINE_MEMBER_FN_1(CalcLoanLimitFrom, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x001225a0, CCountryTag, creditor);
-        inline DEFINE_MEMBER_FN_EDI_0_RET_1(CalcTariffEfficiency, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x001339d0);
-        inline DEFINE_MEMBER_FN_1_RET_ESI(CalcPercentageOfTaxableIncome, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x0012b610, TYPE_IDENTITY((const sstd::vector<clausewitz::fixed_point<int64_t,48,15>> &)), tax_settings);
-        inline DEFINE_MEMBER_FN_1(CanTakeLoanFrom, bool, 0x00123130, CCountryTag, tag);
-        inline DEFINE_MEMBER_FN_EDI_2(ChangeCapital, void, 0x00135fc0, int, province_id, bool, add_to_history);
-        inline DEFINE_MEMBER_FN_3(DelayEvent, void, 0x00140a70, CEvent *, event, CEventScope *, scope, int, days);
-        inline DEFINE_MEMBER_FN_2(DiscoverInvention, void, 0x00102090, CInvention *, invention, bool, add_to_news);
-        inline DEFINE_MEMBER_FN_EDI_0(DismantleSphere, void, 0x001340a0);
 
         static constexpr uintptr_t GetMovement_address_0 = 0x00140e40;
         inline DEFINE_MEMBER_FN_EDX_EDI_0_BASE(GetMovement, CPopMovement *, GetMovement_address_0, CIssue *, issue);

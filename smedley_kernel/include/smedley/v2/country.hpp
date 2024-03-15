@@ -268,32 +268,176 @@ namespace smedley::v2
     public:
         /*[[[cog
         from codegen import print_class_model_fns
-        print_class_model_fns('./models/v2/classes/CCountry.toml') 
+        print_class_model_fns('./models/v2/classes/CCountry.toml', access='public') 
         ]]]*/
-        void AddAcceptedCulture(CCulture * culture)
+        void AddAcceptedCulture(const CCulture & culture)
         {
         const uintptr_t _addr = memory::Map::base_addr + 0x122310;
         __asm mov esi, this __asm push culture __asm call _addr
         }
+        void AddCasusBelli(const CCountryTag & target,const sstd::string & cb_tag,int months,bool send_message)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x135fc0;
+        __asm mov edi, this __asm push send_message __asm push months __asm push cb_tag __asm push target __asm call _addr
+        }
+        void AddControlledProvince(int provinceId)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x10e250;
+        __asm mov esi, this __asm push provinceId __asm call _addr
+        }
+        void AddLeader(CLeader & leader,bool add_to_history)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x10e760;
+        __asm mov esi, this __asm push add_to_history __asm push leader __asm call _addr
+        }
+        void AddPrestige(clausewitz::CFixedPoint delta)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1341a0;
+        __asm mov esi, this __asm push delta __asm call _addr
+        }
+        void AddTimedModifier(sstd::string modifier_tag,int days)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1114d0;
+        __asm push days __asm push modifier_tag __asm push this __asm call _addr
+        }
+        void AddToSphere(const CCountryTag & target)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x133e50;
+        __asm mov esi, target __asm push this __asm call _addr
+        }
+        void AddUnit(CUnit & unit)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x113c80;
+        __asm mov edi, this __asm mov eax, unit __asm call _addr
+        }
+        void Annex(const CCountryTag & arg_0,const CCountryTag & target)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x118620;
+        __asm push target __asm push arg_0 __asm push this __asm call _addr
+        }
+        static void AnnexProvinces(const sstd::vector<int> & provinces,const CCountryTag & target,CEU3Date * arg_2,bool arg_3,const CCountryTag & remove_core)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0xb5a90;
+        __asm push remove_core __asm push arg_3 __asm push arg_2 __asm push target __asm push provinces __asm call _addr
+        }
+        void Break(CRebelFaction & faction)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x116630;
+        __asm push faction __asm push this __asm call _addr
+        }
+        void BreakAlliances()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x117250;
+        __asm push this __asm call _addr
+        }
+        clausewitz::fixed_point<int64_t,48,15> CalcFactoryCost(const CBuilding & building,bool arg_1)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0xdaa10;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov esi, ret_val_ptr __asm mov edi, this __asm mov ecx, building __asm push arg_1 __asm call _addr
+        return ret_val;
+        }
+        clausewitz::fixed_point<int64_t,48,15> CalcGovernmentNeedForGood(int good_type_idx)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x139760;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov esi, ret_val_ptr __asm mov eax, this __asm push good_type_idx __asm call _addr
+        return ret_val;
+        }
+        clausewitz::fixed_point<int64_t,48,15> CalcLoanLimitFrom(CCountryTag tag)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1225a0;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov eax, this __asm push tag __asm push ret_val_ptr __asm call _addr
+        return ret_val;
+        }
+        clausewitz::fixed_point<int64_t,48,15> CalcPercentageOfTaxableIncome(const sstd::vector<clausewitz::fixed_point<int64_t,48,15>> & tax_settings)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x12b610;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov esi, ret_val_ptr __asm push tax_settings __asm push this __asm call _addr
+        return ret_val;
+        }
+        CGoodsPool CalcRemainingInputsForBuilding(const CBuilding & building,const CGoodsPool & inputs_needed)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0xdabf0;
+        CGoodsPool ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov edi, this __asm push ret_val_ptr __asm push inputs_needed __asm push building __asm call _addr
+        return ret_val;
+        }
+        bool CanTakeLoanFrom(CCountryTag tag)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x123130;
+        __asm push tag __asm push this __asm call _addr
+        }
+        void ChangeCapital(int province_id,bool add_to_history)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x10e4c0;
+        __asm mov edi, this __asm push add_to_history __asm push province_id __asm call _addr
+        }
+        void ChangeGovernment(const CGovernment & government,bool arg_1,void * arg_2,bool arg_3)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x113a90;
+        __asm mov esi, this __asm push arg_3 __asm push arg_2 __asm push arg_1 __asm push government __asm call _addr
+        }
+        void ConstructStateBuilding(CBuilding & building,CState & state)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x12c6b0;
+        __asm push state __asm push building __asm push this __asm call _addr
+        }
+        void DeclareAsBadDebtor()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1241f0;
+        __asm push this __asm call _addr
+        }
+        void DelayedEvent(CEvent & event,CEventScope & scope,int days)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x140a70;
+        __asm push days __asm push scope __asm push event __asm push this __asm call _addr
+        }
+        void DiscoverInvention(CInvention & invention,bool arg_1)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x102090;
+        __asm push arg_1 __asm push invention __asm push this __asm call _addr
+        }
+        void DismantleSphere()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1340a0;
+        __asm mov edi, this __asm call _addr
+        }
+        void GetAllianceDiplomaticValue(CCountry & player,int & out_val,sstd::string & out_str)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x43ec10;
+        __asm push out_str __asm push out_val __asm push player __asm push this __asm call _addr
+        }
+        clausewitz::CFixedPoint daily_research_points()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x138150;
+        clausewitz::CFixedPoint ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov edi, ret_val_ptr __asm mov ecx, this __asm call _addr
+        return ret_val;
+        }
+        clausewitz::fixed_point<int64_t,48,15> debt()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x123880;
+        __asm push this __asm call _addr
+        }
+        clausewitz::fixed_point<int64_t,48,15> tariff_efficiency()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1339d0;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov edi, this __asm push ret_val_ptr __asm call _addr
+        return ret_val;
+        }
         //[[[end]]]
 
-        // TODO: test below:
-        inline DEFINE_MEMBER_FN_EDI_4(AddCasusBelli, void, 0x00135fc0, const CCountryTag &, target, const sstd::string &, cb_tag, int, months, bool, send_message);
-        inline DEFINE_MEMBER_FN_ESI_2(AddLeader, void, 0x0010e760, CLeader *, leader, bool, add_to_history);
-        inline DEFINE_MEMBER_FN_ESI_1(AddPrestige, void, 0x001341a0, clausewitz::CFixedPoint, delta);
-        inline DEFINE_MEMBER_FN_2(AddTimedModifier, void, 0x001114d0, sstd::string, modifier_tag, int, days);
-        inline DEFINE_MEMBER_FN_1_ESI(AddToSphere, void, 0x00133e50, const CCountryTag &, target);
-        inline DEFINE_MEMBER_FN_EDI_EAX_0(AddUnit, void, 0x00113c80, CUnit *, unit);
-        inline DEFINE_MEMBER_FN_2(Annex, void, 0x00118620, const CCountryTag *, remove_core_from, CCountryTag, target);
-        inline DEFINE_MEMBER_FN_1(Break, void, 0x00116630, CRebelFaction *, faction);
-        DEFINE_MEMBER_FN_EDI_0_RET_EAX(CalcDebt, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x00123880);
-        inline DEFINE_MEMBER_FN_EDI_ECX_1_RET_ESI(CalcFactoryCost, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x000daa10, const CBuilding &, building, bool, add_owner_cost);
-        inline DEFINE_MEMBER_FN_EAX_ESI_1_RET_ESI(CalcGovernmentNeedForGood, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x00139760, int, goods_type);
-        inline DEFINE_MEMBER_FN_1(CalcLoanLimitFrom, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x001225a0, CCountryTag, creditor);
-        inline DEFINE_MEMBER_FN_EDI_0_RET_1(CalcTariffEfficiency, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x001339d0);
-        inline DEFINE_MEMBER_FN_1_RET_ESI(CalcPercentageOfTaxableIncome, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x0012b610, TYPE_IDENTITY((const sstd::vector<clausewitz::fixed_point<int64_t,48,15>> &)), tax_settings);
-        inline DEFINE_MEMBER_FN_1(CanTakeLoanFrom, bool, 0x00123130, CCountryTag, tag);
-        inline DEFINE_MEMBER_FN_EDI_2(ChangeCapital, void, 0x00135fc0, int, province_id, bool, add_to_history);
         inline DEFINE_MEMBER_FN_3(DelayEvent, void, 0x00140a70, CEvent *, event, CEventScope *, scope, int, days);
         inline DEFINE_MEMBER_FN_2(DiscoverInvention, void, 0x00102090, CInvention *, invention, bool, add_to_news);
         inline DEFINE_MEMBER_FN_EDI_0(DismantleSphere, void, 0x001340a0);
