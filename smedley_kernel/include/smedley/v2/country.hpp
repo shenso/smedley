@@ -13,7 +13,6 @@
 #include "tag.hpp"
 #include "tech.hpp"
 #include "variables.hpp"
-#include "../macros.hpp"
 #include "../clausewitz/color.hpp"
 #include "../clausewitz/persistent.hpp"
 #include "../clausewitz/types.hpp"
@@ -256,8 +255,6 @@ namespace smedley::v2
         uint8_t _unk_0x15c0[0x1c];
         sstd::vector<CMobilizationSchedule> _scheduled_mobilizations; // 15dc
         sstd::string _region_name; // 15ec
-    private:
-        DECLARE_MEMBER_FN_CLASS(CCountry);
     protected:
         /*[[[cog
         from codegen import print_class_model_fns

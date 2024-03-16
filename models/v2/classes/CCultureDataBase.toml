@@ -1,0 +1,8 @@
+name = "CCultureDataBase"
+
+[[fns]]
+name = "instance"
+ret = "CCultureDataBase *"
+static = true
+prop = true
+offset = 0x00e587e8

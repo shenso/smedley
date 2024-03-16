@@ -11,7 +11,6 @@
 #include "settings.hpp"
 #include "war.hpp"
 #include "worldmarket.hpp"
-#include "../macros.hpp"
 #include "../clausewitz/persistent.hpp"
 #include "../clausewitz/types.hpp"
 #include "../std/vector.hpp"

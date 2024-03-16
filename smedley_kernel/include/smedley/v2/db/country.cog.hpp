@@ -20,11 +20,6 @@ namespace smedley::v2
         from codegen import print_class_model_fns
         print_class_model_fns('./models/v2/classes/CCountryDataBase.toml')
         ]]]*/
-        static CCountryDataBase * instance()
-        {
-        const uintptr_t _addr = memory::Map::base_addr + 0xe587e4;
-        return *(reinterpret_cast<CCountryDataBase **>(_addr));
-        }
         // [[[end]]]
 
         /// @returns the tag matching str if found. the NULL tag (---) otherwise

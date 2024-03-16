@@ -1,0 +1,8 @@
+name = "CCountryDataBase"
+
+[[fns]]
+name = "instance"
+ret = "CCountryDataBase *"
+static = true
+prop = true
+offset = 0x00e587e4

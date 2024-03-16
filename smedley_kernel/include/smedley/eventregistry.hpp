@@ -1,7 +1,7 @@
 #pragma once
 
 #include "event.hpp"
-#include "macros.hpp"
+#include "apimacros.hpp"
 #include <algorithm>
 #include <cstdint>
 #include <functional>
