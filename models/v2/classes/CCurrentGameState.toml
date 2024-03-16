@@ -1,0 +1,8 @@
+name = "CCurrentGameState"
+
+[[fns]]
+name = "instance"
+ret = "CCurrentGameState *"
+static = true
+prop = true
+offset = 0x00e588e8

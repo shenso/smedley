@@ -24,11 +24,6 @@ namespace smedley::v2
         from codegen import print_class_model_fns
         print_class_model_fns('./models/v2/classes/CCultureDataBase.toml')
         ]]]*/
-        static CCultureDataBase * instance()
-        {
-        const uintptr_t _addr = memory::Map::base_addr + 0xe587e8;
-        return *(reinterpret_cast<CCultureDataBase **>(_addr));
-        }
         // [[[end]]]
     };
 

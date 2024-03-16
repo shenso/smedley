@@ -13,7 +13,6 @@
 #include "tag.hpp"
 #include "tech.hpp"
 #include "variables.hpp"
-#include "../macros.hpp"
 #include "../clausewitz/color.hpp"
 #include "../clausewitz/persistent.hpp"
 #include "../clausewitz/types.hpp"
@@ -256,67 +255,344 @@ namespace smedley::v2
         uint8_t _unk_0x15c0[0x1c];
         sstd::vector<CMobilizationSchedule> _scheduled_mobilizations; // 15dc
         sstd::string _region_name; // 15ec
-    private:
-        DECLARE_MEMBER_FN_CLASS(CCountry);
     protected:
-        /// @brief called once each day
-        inline DEFINE_MEMBER_FN_0(DailyUpdate, void, 0x00108590);
-        /// @brief called once each month
-        inline DEFINE_MEMBER_FN_0(MonthlyUpdate, void, 0x0010c2a0);
-        inline DEFINE_MEMBER_FN_0(PayDailyInterest, void, 0x00123c30);
-        inline DEFINE_MEMBER_FN_3(SubsidizePops, void, 0x0010b9b0, int, num_pop_types, CPopDataBase *, pop_db, CGameState *, game_state);
+        /*[[[cog
+        from codegen import print_class_model_fns
+        print_class_model_fns('./models/v2/classes/CCountry.toml', access='protected') 
+        ]]]*/
+        void ClearIncomeAndExpenses()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x11fb60;
+        __asm mov eax, this __asm call _addr
+        }
+        void DailyUpdate()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x108590;
+        __asm push this __asm call _addr
+        }
+        void Initialize()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x103020;
+        __asm push this __asm call _addr
+        }
+        void InitializeDiplomacy()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1047c0;
+        __asm push this __asm call _addr
+        }
+        void MonthlyUpdate()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x10c2a0;
+        __asm push this __asm call _addr
+        }
+        void PayDailyInterest()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x123c30;
+        __asm push this __asm call _addr
+        }
+        void UpdateCapital()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x10e540;
+        __asm push this __asm call _addr
+        }
+        void UpdateOverlord()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x119920;
+        __asm push this __asm call _addr
+        }
+        void UpdateShareFactor()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x140880;
+        __asm push this __asm call _addr
+        }
+        //[[[end]]]
+
     public:
-        DEFINE_MEMBER_FN_ESI_1(AddAcceptedCulture, void, 0x00122310, CCulture *, culture);
-        // TODO: test below:
-        inline DEFINE_MEMBER_FN_EDI_4(AddCasusBelli, void, 0x00135fc0, const CCountryTag &, target, const sstd::string &, cb_tag, int, months, bool, send_message);
-        inline DEFINE_MEMBER_FN_ESI_2(AddLeader, void, 0x0010e760, CLeader *, leader, bool, add_to_history);
-        inline DEFINE_MEMBER_FN_ESI_1(AddPrestige, void, 0x001341a0, clausewitz::CFixedPoint, delta);
-        inline DEFINE_MEMBER_FN_2(AddTimedModifier, void, 0x001114d0, sstd::string, modifier_tag, int, days);
-        inline DEFINE_MEMBER_FN_1_ESI(AddToSphere, void, 0x00133e50, const CCountryTag &, target);
-        inline DEFINE_MEMBER_FN_EDI_EAX_0(AddUnit, void, 0x00113c80, CUnit *, unit);
-        inline DEFINE_MEMBER_FN_2(Annex, void, 0x00118620, const CCountryTag *, remove_core_from, CCountryTag, target);
-        inline DEFINE_MEMBER_FN_1(Break, void, 0x00116630, CRebelFaction *, faction);
-        DEFINE_MEMBER_FN_EDI_0_RET_EAX(CalcDebt, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x00123880);
-        inline DEFINE_MEMBER_FN_EDI_ECX_1_RET_ESI(CalcFactoryCost, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x000daa10, const CBuilding &, building, bool, add_owner_cost);
-        inline DEFINE_MEMBER_FN_EAX_ESI_1_RET_ESI(CalcGovernmentNeedForGood, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x00139760, int, goods_type);
-        inline DEFINE_MEMBER_FN_1(CalcLoanLimitFrom, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x001225a0, CCountryTag, creditor);
-        inline DEFINE_MEMBER_FN_EDI_0_RET_1(CalcTariffEfficiency, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x001339d0);
-        inline DEFINE_MEMBER_FN_1_RET_ESI(CalcPercentageOfTaxableIncome, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x0012b610, TYPE_IDENTITY((const sstd::vector<clausewitz::fixed_point<int64_t,48,15>> &)), tax_settings);
-        inline DEFINE_MEMBER_FN_1(CanTakeLoanFrom, bool, 0x00123130, CCountryTag, tag);
-        inline DEFINE_MEMBER_FN_EDI_2(ChangeCapital, void, 0x00135fc0, int, province_id, bool, add_to_history);
-        inline DEFINE_MEMBER_FN_3(DelayEvent, void, 0x00140a70, CEvent *, event, CEventScope *, scope, int, days);
-        inline DEFINE_MEMBER_FN_2(DiscoverInvention, void, 0x00102090, CInvention *, invention, bool, add_to_news);
-        inline DEFINE_MEMBER_FN_EDI_0(DismantleSphere, void, 0x001340a0);
-
-        static constexpr uintptr_t GetMovement_address_0 = 0x00140e40;
-        inline DEFINE_MEMBER_FN_EDX_EDI_0_BASE(GetMovement, CPopMovement *, GetMovement_address_0, CIssue *, issue);
-        static constexpr uintptr_t GetMovement_address_1 = 0x00140e80;
-        inline DEFINE_MEMBER_FN_EDX_1_BASE(GetMovement, CPopMovement *, GetMovement_address_1, const CCountryTag &, country_tag);
-
-        inline DEFINE_MEMBER_FN_ESI_EDX_0(HasStaticModifier, bool, 0x001068b0, CStaticModifier *, modifier);
-        inline DEFINE_MEMBER_FN_EDI_0(NationalizeFactories, void, 0x001441f0);
-        inline DEFINE_MEMBER_FN_THISCALL_2(PayBackLoan, void, 0x001238d0, bool, param_1, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), amount);
-        inline DEFINE_MEMBER_FN_0(RearrangeUpperHouse, void, 0x00127d10);
-        inline DEFINE_MEMBER_FN_0(RefreshSubUnits, void, 0x00127d10);
-        /// RemoveDebts? 
-        inline DEFINE_MEMBER_FN_0(Unk_00111340, void, 0x00111340);
-        /// doesn't seem to work
-        inline DEFINE_MEMBER_FN_EDI_2(RemoveFoW, void, 0x0011b350, int, months, CCountryTag, target);
-        inline DEFINE_MEMBER_FN_1_EDI(RemoveFromSphere, void, 0x00133f20, const CCountryTag &, target);
-        inline DEFINE_MEMBER_FN_THISCALL_0(SaveColor, void, 0x0011b870);
-        inline DEFINE_MEMBER_FN_EAX_1(SetLeadership, void, 0x00139380, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), val);
-        inline DEFINE_MEMBER_FN_EDI_2(SetPrimaryCulture, void, 0x00122430, CCulture *, culture, bool, add_to_history);
-        inline DEFINE_MEMBER_FN_EDI_EDX_1(SetRelations, void, 0x001179e0, const CCountryTag &, country_tag, clausewitz::CFixedPoint, n);
-        inline DEFINE_MEMBER_FN_ESI_1(SetResearchPoints, void, 0x001366f0, clausewitz::CFixedPoint, n);
-        /// @param param_1 show dialog?
-        /// @returns if the loan was taken successfully?
-        inline DEFINE_MEMBER_FN_2(TakeLoan, bool, 0x00122910, bool, param_1, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), amount);
-        inline DEFINE_MEMBER_FN_2_RET_ESI(TakeLoanFrom, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x00122820, const CCountryTag &, creditor_tag, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), amount);
-        inline DEFINE_MEMBER_FN_0_THIS_IN_STACK(UpdateCapital, void, 0x0010e540);
-        //inline DEFINE_MEMBER_FN_ESI_0(UpdateOverlord, void, 0x00119920);
-        inline DEFINE_MEMBER_FN_0(Westernize, void, 0x00142370);
-
-        DEFINE_MEMBER_FN_EAX_0_RET_ECX(name, sstd::string, 0x000f97a0);
+        /*[[[cog
+        from codegen import print_class_model_fns
+        print_class_model_fns('./models/v2/classes/CCountry.toml', access='public') 
+        ]]]*/
+        void AddAcceptedCulture(const CCulture & culture)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x122310;
+        __asm mov esi, this __asm push culture __asm call _addr
+        }
+        void AddCasusBelli(const CCountryTag & target,const sstd::string & cb_tag,int months,bool send_message)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x135fc0;
+        __asm mov edi, this __asm push send_message __asm push months __asm push cb_tag __asm push target __asm call _addr
+        }
+        void AddControlledProvince(int provinceId)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x10e250;
+        __asm mov esi, this __asm push provinceId __asm call _addr
+        }
+        void AddLeader(CLeader & leader,bool add_to_history)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x10e760;
+        __asm mov esi, this __asm push add_to_history __asm push leader __asm call _addr
+        }
+        void AddPrestige(clausewitz::CFixedPoint delta)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1341a0;
+        __asm mov esi, this __asm push delta __asm call _addr
+        }
+        void AddTimedModifier(sstd::string modifier_tag,int days)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1114d0;
+        __asm push days __asm push modifier_tag __asm push this __asm call _addr
+        }
+        void AddToSphere(const CCountryTag & target)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x133e50;
+        __asm mov esi, target __asm push this __asm call _addr
+        }
+        void AddUnit(CUnit & unit)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x113c80;
+        __asm mov edi, this __asm mov eax, unit __asm call _addr
+        }
+        void Annex(const CCountryTag & arg_0,const CCountryTag & target)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x118620;
+        __asm push target __asm push arg_0 __asm push this __asm call _addr
+        }
+        static void AnnexProvinces(const sstd::vector<int> & provinces,const CCountryTag & target,CEU3Date * arg_2,bool arg_3,const CCountryTag & remove_core)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0xb5a90;
+        __asm push remove_core __asm push arg_3 __asm push arg_2 __asm push target __asm push provinces __asm call _addr
+        }
+        void Break(CRebelFaction & faction)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x116630;
+        __asm push faction __asm push this __asm call _addr
+        }
+        void BreakAlliances()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x117250;
+        __asm push this __asm call _addr
+        }
+        clausewitz::fixed_point<int64_t,48,15> CalcFactoryCost(const CBuilding & building,bool arg_1)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0xdaa10;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov esi, ret_val_ptr __asm mov edi, this __asm mov ecx, building __asm push arg_1 __asm call _addr
+        return ret_val;
+        }
+        clausewitz::fixed_point<int64_t,48,15> CalcGovernmentNeedForGood(int good_type_idx)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x139760;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov esi, ret_val_ptr __asm mov eax, this __asm push good_type_idx __asm call _addr
+        return ret_val;
+        }
+        clausewitz::fixed_point<int64_t,48,15> CalcLoanLimitFrom(CCountryTag tag)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1225a0;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov eax, this __asm push tag __asm push ret_val_ptr __asm call _addr
+        return ret_val;
+        }
+        clausewitz::fixed_point<int64_t,48,15> CalcPercentageOfTaxableIncome(const sstd::vector<clausewitz::fixed_point<int64_t,48,15>> & tax_settings)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x12b610;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov esi, ret_val_ptr __asm push tax_settings __asm push this __asm call _addr
+        return ret_val;
+        }
+        CGoodsPool CalcRemainingInputsForBuilding(const CBuilding & building,const CGoodsPool & inputs_needed)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0xdabf0;
+        CGoodsPool ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov edi, this __asm push ret_val_ptr __asm push inputs_needed __asm push building __asm call _addr
+        return ret_val;
+        }
+        bool CanTakeLoanFrom(CCountryTag tag)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x123130;
+        __asm push tag __asm push this __asm call _addr
+        }
+        void ChangeCapital(int province_id,bool add_to_history)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x10e4c0;
+        __asm mov edi, this __asm push add_to_history __asm push province_id __asm call _addr
+        }
+        void ChangeGovernment(const CGovernment & government,bool arg_1,void * arg_2,bool arg_3)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x113a90;
+        __asm mov esi, this __asm push arg_3 __asm push arg_2 __asm push arg_1 __asm push government __asm call _addr
+        }
+        void ConstructStateBuilding(CBuilding & building,CState & state)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x12c6b0;
+        __asm push state __asm push building __asm push this __asm call _addr
+        }
+        void DeclareAsBadDebtor()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1241f0;
+        __asm push this __asm call _addr
+        }
+        void DelayedEvent(CEvent & event,CEventScope & scope,int days)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x140a70;
+        __asm push days __asm push scope __asm push event __asm push this __asm call _addr
+        }
+        void DiscoverInvention(CInvention & invention,bool arg_1)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x102090;
+        __asm push arg_1 __asm push invention __asm push this __asm call _addr
+        }
+        void DismantleSphere()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1340a0;
+        __asm mov edi, this __asm call _addr
+        }
+        void GetAllianceDiplomaticValue(CCountry & player,int & out_val,sstd::string & out_str)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x43ec10;
+        __asm push out_str __asm push out_val __asm push player __asm push this __asm call _addr
+        }
+        CPopMovement * GetMovement(const CIssue & issue)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x140e40;
+        __asm mov edx, this __asm mov edi, issue __asm call _addr
+        }
+        CPopMovement * GetMovement(const CCountryTag & tag)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x140e80;
+        __asm mov edx, this __asm push tag __asm call _addr
+        }
+        bool HasStaticModifier(const CStaticModifier & modifier)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1068b0;
+        __asm mov esi, this __asm push modifier __asm call _addr
+        }
+        void NationalizeFactories()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1441f0;
+        __asm mov edi, this __asm call _addr
+        }
+        void PayBackLoan(bool arg_0,clausewitz::fixed_point<int64_t,48,15> amount)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1238d0;
+        __asm mov ecx, this __asm push amount __asm push arg_0 __asm call _addr
+        }
+        void RearrangeUpperHouse()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x127d10;
+        __asm push this __asm call _addr
+        }
+        void RefreshSubUnits()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x108330;
+        __asm push this __asm call _addr
+        }
+        void RemoveDebts(bool ignore_already_paid)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x111340;
+        __asm push ignore_already_paid __asm push this __asm call _addr
+        }
+        void RemoveFoW(int months,CCountryTag target)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x11b350;
+        __asm mov edi, this __asm push target __asm push months __asm call _addr
+        }
+        void RemoveFromSphere(const CCountryTag & target)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x133f20;
+        __asm mov edi, target __asm push this __asm call _addr
+        }
+        void SaveColor()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x11b870;
+        __asm mov ecx, this __asm call _addr
+        }
+        void SetLeadership(clausewitz::fixed_point<int64_t,48,15> arg_0)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x139380;
+        __asm mov eax, this __asm push arg_0 __asm call _addr
+        }
+        void SetPrimaryCulture(clausewitz::fixed_point<int64_t,48,15> arg_0)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x139380;
+        __asm mov eax, this __asm push arg_0 __asm call _addr
+        }
+        void SetRelations(const CCountryTag & tag,clausewitz::CFixedPoint n)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1179e0;
+        __asm mov edi, this __asm mov edx, tag __asm push n __asm call _addr
+        }
+        void SetResearchPoints(clausewitz::CFixedPoint n)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1366f0;
+        __asm mov esi, this __asm push n __asm call _addr
+        }
+        bool TakeLoan(bool arg_0,clausewitz::fixed_point<int64_t,48,15> amount)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x122910;
+        __asm push amount __asm push arg_0 __asm push this __asm call _addr
+        }
+        clausewitz::fixed_point<int64_t,48,15> TakeLoanFrom(CCountryTag tag,clausewitz::fixed_point<int64_t,48,15> amount)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x122820;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov esi, ret_val_ptr __asm push amount __asm push tag __asm push this __asm call _addr
+        return ret_val;
+        }
+        bool TryTakeLoanFrom(CCountryTag tag,clausewitz::fixed_point<int64_t,48,15> amount)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x123400;
+        __asm push amount __asm push tag __asm push this __asm call _addr
+        }
+        void Westernize()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x142370;
+        __asm push this __asm call _addr
+        }
+        clausewitz::fixed_point<int64_t,48,15> WithdrawFromTreasury(int expense_type,clausewitz::fixed_point<int64_t,48,15> amount)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x142370;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov edi, ret_val_ptr __asm mov eax, this __asm push amount __asm push expense_type __asm call _addr
+        return ret_val;
+        }
+        clausewitz::CFixedPoint daily_research_points()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x138150;
+        clausewitz::CFixedPoint ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov edi, ret_val_ptr __asm mov ecx, this __asm call _addr
+        return ret_val;
+        }
+        clausewitz::fixed_point<int64_t,48,15> debt()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x123880;
+        __asm push this __asm call _addr
+        }
+        sstd::string name()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0xf97a0;
+        sstd::string ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov ecx, ret_val_ptr __asm mov eax, this __asm call _addr
+        return ret_val;
+        }
+        clausewitz::fixed_point<int64_t,48,15> tariff_efficiency()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1339d0;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov edi, this __asm push ret_val_ptr __asm call _addr
+        return ret_val;
+        }
+        //[[[end]]]
 
         inline bool exists() const { return _owned_provinces.size() > 0; }
     };

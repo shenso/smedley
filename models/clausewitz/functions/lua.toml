@@ -1,0 +1,11 @@
+namespace = "smedley::clausewitz"
+
+[[fns]]
+name = "GetLuaState"
+ret = "lua_State **"
+offset = 0x005be180
+
+    [[fns.args]]
+    argtype = "int"
+    name = "index"
+    reg = "edi"

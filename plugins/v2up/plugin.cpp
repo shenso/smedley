@@ -56,7 +56,7 @@ namespace v2up
                     continue;
                 }
 
-                country->AddAcceptedCulture(culture);
+                country->AddAcceptedCulture(*culture);
                 logger().Info(std::string("added yankee culture to ") + country->name().c_str());
             }
 

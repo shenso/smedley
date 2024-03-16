@@ -1,8 +1,12 @@
 .vs/
 .vscode/
+
 out/
 build/
+
 */docs/html
 */docs/latex
+
 .venv/
 __pycache__/
+*.pyc

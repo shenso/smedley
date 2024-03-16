@@ -11,6 +11,7 @@
 #include "settings.hpp"
 #include "war.hpp"
 #include "worldmarket.hpp"
+#include "../macros.hpp"
 #include "../clausewitz/persistent.hpp"
 #include "../clausewitz/types.hpp"
 #include "../std/vector.hpp"
@@ -137,11 +138,6 @@ namespace smedley::v2
         from codegen import print_class_model_fns
         print_class_model_fns('./models/v2/classes/CCurrentGameState.toml')
         ]]]*/
-        static CCurrentGameState * instance()
-        {
-        const uintptr_t _addr = memory::Map::base_addr + 0xe588e8;
-        return *(reinterpret_cast<CCurrentGameState **>(_addr));
-        }
         // [[[end]]]
     };
 
