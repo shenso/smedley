@@ -276,7 +276,7 @@ this = "esi"
     argtype = "bool"
 
 [[fns]]
-name = "ClearIncomingAndExpenses"
+name = "ClearIncomeAndExpenses"
 ret = "void"
 callconv = "__stdcall"
 access = "protected"
@@ -366,6 +366,284 @@ offset = 0x0043ec10
     argtype = "sstd::string &"
     name = "out_str"
 
+[[fns]]
+name = "GetMovement"
+ret = "CPopMovement *"
+offset = 0x00140e40
+this = "edx"
+
+    [[fns.args]]
+    argtype = "const CIssue &"
+    name = "issue"
+    reg = "edi"
+
+[[fns]]
+name = "GetMovement"
+ret = "CPopMovement *"
+callconv = "__stdcall"
+offset = 0x00140e80
+this = "edx"
+
+    [[fns.args]]
+    argtype = "const CCountryTag &"
+    name = "tag"
+
+[[fns]]
+name = "HasStaticModifier"
+ret = "bool"
+callconv = "__fastcall"
+offset = 0x001068b0
+this = "esi"
+
+    [[fns.args]]
+    argtype = "const CStaticModifier &"
+    name = "modifier"
+
+[[fns]]
+name = "Initialize"
+access = "protected"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00103020
+doc = "This might be mislabeled."
+
+[[fns]]
+name = "InitializeDiplomacy"
+access = "protected"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x001047c0
+doc = "This might be mislabeled."
+
+[[fns]]
+name = "MonthlyUpdate"
+access = "protected"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x0010c2a0
+
+[[fns]]
+name = "NationalizeFactories"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x001441f0
+this = "edi"
+
+[[fns]]
+name = "PayBackLoan"
+ret = "void"
+callconv = "__thiscall"
+offset = 0x001238d0
+this = "ecx"
+
+    [[fns.args]]
+    argtype = "bool"
+
+    [[fns.args]]
+    argtype = "clausewitz::fixed_point<int64_t,48,15>"
+    name = "amount"
+
+[[fns]]
+name = "PayDailyInterest"
+access = "protected"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00123c30
+
+[[fns]]
+name = "RearrangeUpperHouse"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00127d10
+
+[[fns]]
+name = "RefreshSubUnits"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00108330
+doc = "This might be mislabeled."
+
+[[fns]]
+name = "RemoveDebts"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00111340
+doc = "This might be mislabeled."
+
+    [[fns.args]]
+    argtype = "bool"
+    name = "ignore_already_paid"
+
+[[fns]]
+name = "RemoveFoW"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x0011b350
+this = "edi"
+doc = "Does not seem to work."
+
+    [[fns.args]]
+    argtype = "int"
+    name = "months"
+
+    [[fns.args]]
+    argtype = "CCountryTag"
+    name = "target"
+
+[[fns]]
+name = "RemoveFromSphere"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00133f20
+
+    [[fns.args]]
+    argtype = "const CCountryTag &"
+    name = "target"
+    reg = "edi"
+
+[[fns]]
+name = "SaveColor"
+ret = "void"
+callconv = "__thiscall"
+offset = 0x0011b870
+this = "ecx"
+
+[[fns]]
+name = "SetLeadership"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00139380 
+this = "eax"
+
+    [[fns.args]]
+    argtype = "clausewitz::fixed_point<int64_t,48,15>"
+
+[[fns]]
+name = "SetPrimaryCulture"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00139380 
+this = "eax"
+
+    [[fns.args]]
+    argtype = "clausewitz::fixed_point<int64_t,48,15>"
+
+[[fns]]
+name = "SetRelations"
+ret = "void"
+callconv = "__fastcall"
+offset = 0x001179e0
+this = "edi"
+
+    [[fns.args]]
+    argtype = "const CCountryTag &"
+    name = "tag"
+    reg = "edx"
+
+    [[fns.args]]
+    argtype = "clausewitz::CFixedPoint"
+    name = "n"
+
+[[fns]]
+name = "SetResearchPoints"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x001366f0
+this = "esi"
+
+    [[fns.args]]
+    argtype = "clausewitz::CFixedPoint"
+    name = "n"
+
+[[fns]]
+name = "TakeLoan"
+ret = "bool"
+callconv = "__stdcall"
+offset = 0x00122910
+doc = """
+@param arg_1 show dialogue?
+@returns if the loan was taken successfully?
+"""
+
+    [[fns.args]]
+    argtype = "bool"
+
+    [[fns.args]]
+    argtype = "clausewitz::fixed_point<int64_t,48,15>"
+    name = "amount"
+
+[[fns]]
+name = "TakeLoanFrom"
+ret = "clausewitz::fixed_point<int64_t,48,15>"
+retbuf = "esi"
+callconv = "__stdcall"
+offset = 0x00122820
+
+    [[fns.args]]
+    argtype = "CCountryTag"
+    name = "tag"
+
+    [[fns.args]]
+    argtype = "clausewitz::fixed_point<int64_t,48,15>"
+    name = "amount"
+
+[[fns]]
+name = "TryTakeLoanFrom"
+ret = "bool"
+callconv = "__stdcall"
+offset = 0x00123400
+
+    [[fns.args]]
+    argtype = "CCountryTag"
+    name = "tag"
+
+    [[fns.args]]
+    argtype = "clausewitz::fixed_point<int64_t,48,15>"
+    name = "amount"
+
+[[fns]]
+name = "UpdateCapital"
+access = "protected"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x0010e540
+
+[[fns]]
+name = "UpdateOverlord"
+access = "protected"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00119920
+
+[[fns]]
+name = "UpdateShareFactor"
+access = "protected"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00140880
+
+[[fns]]
+name = "Westernize"
+ret = "void"
+callconv = "__stdcall"
+offset = 0x00142370
+
+[[fns]]
+name = "WithdrawFromTreasury"
+ret = "clausewitz::fixed_point<int64_t,48,15>"
+retbuf = "edi"
+callconv = "__stdcall"
+offset = 0x00142370
+this = "eax"
+
+    [[fns.args]]
+    argtype = "int"
+    name = "expense_type"
+
+    [[fns.args]]
+    argtype = "clausewitz::fixed_point<int64_t,48,15>"
+    name = "amount"
+
 #####################################
 #               GETTERS             #
 #####################################
@@ -382,6 +660,13 @@ name = "debt"
 ret = "clausewitz::fixed_point<int64_t,48,15>"
 callconv = "__stdcall"
 offset = 0x00123880
+
+[[fns]]
+name = "name"
+ret = "sstd::string"
+retbuf = "ecx"
+offset = 0x000f97a0
+this = "eax"
 
 [[fns]]
 name = "tariff_efficiency"

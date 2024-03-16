@@ -259,12 +259,57 @@ namespace smedley::v2
     private:
         DECLARE_MEMBER_FN_CLASS(CCountry);
     protected:
-        /// @brief called once each day
-        inline DEFINE_MEMBER_FN_0(DailyUpdate, void, 0x00108590);
-        /// @brief called once each month
-        inline DEFINE_MEMBER_FN_0(MonthlyUpdate, void, 0x0010c2a0);
-        inline DEFINE_MEMBER_FN_0(PayDailyInterest, void, 0x00123c30);
-        inline DEFINE_MEMBER_FN_3(SubsidizePops, void, 0x0010b9b0, int, num_pop_types, CPopDataBase *, pop_db, CGameState *, game_state);
+        /*[[[cog
+        from codegen import print_class_model_fns
+        print_class_model_fns('./models/v2/classes/CCountry.toml', access='protected') 
+        ]]]*/
+        void ClearIncomeAndExpenses()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x11fb60;
+        __asm mov eax, this __asm call _addr
+        }
+        void DailyUpdate()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x108590;
+        __asm push this __asm call _addr
+        }
+        void Initialize()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x103020;
+        __asm push this __asm call _addr
+        }
+        void InitializeDiplomacy()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1047c0;
+        __asm push this __asm call _addr
+        }
+        void MonthlyUpdate()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x10c2a0;
+        __asm push this __asm call _addr
+        }
+        void PayDailyInterest()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x123c30;
+        __asm push this __asm call _addr
+        }
+        void UpdateCapital()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x10e540;
+        __asm push this __asm call _addr
+        }
+        void UpdateOverlord()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x119920;
+        __asm push this __asm call _addr
+        }
+        void UpdateShareFactor()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x140880;
+        __asm push this __asm call _addr
+        }
+        //[[[end]]]
+
     public:
         /*[[[cog
         from codegen import print_class_model_fns
@@ -415,6 +460,112 @@ namespace smedley::v2
         const uintptr_t _addr = memory::Map::base_addr + 0x43ec10;
         __asm push out_str __asm push out_val __asm push player __asm push this __asm call _addr
         }
+        CPopMovement * GetMovement(const CIssue & issue)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x140e40;
+        __asm mov edx, this __asm mov edi, issue __asm call _addr
+        }
+        CPopMovement * GetMovement(const CCountryTag & tag)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x140e80;
+        __asm mov edx, this __asm push tag __asm call _addr
+        }
+        bool HasStaticModifier(const CStaticModifier & modifier)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1068b0;
+        __asm mov esi, this __asm push modifier __asm call _addr
+        }
+        void NationalizeFactories()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1441f0;
+        __asm mov edi, this __asm call _addr
+        }
+        void PayBackLoan(bool arg_0,clausewitz::fixed_point<int64_t,48,15> amount)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1238d0;
+        __asm mov ecx, this __asm push amount __asm push arg_0 __asm call _addr
+        }
+        void RearrangeUpperHouse()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x127d10;
+        __asm push this __asm call _addr
+        }
+        void RefreshSubUnits()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x108330;
+        __asm push this __asm call _addr
+        }
+        void RemoveDebts(bool ignore_already_paid)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x111340;
+        __asm push ignore_already_paid __asm push this __asm call _addr
+        }
+        void RemoveFoW(int months,CCountryTag target)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x11b350;
+        __asm mov edi, this __asm push target __asm push months __asm call _addr
+        }
+        void RemoveFromSphere(const CCountryTag & target)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x133f20;
+        __asm mov edi, target __asm push this __asm call _addr
+        }
+        void SaveColor()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x11b870;
+        __asm mov ecx, this __asm call _addr
+        }
+        void SetLeadership(clausewitz::fixed_point<int64_t,48,15> arg_0)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x139380;
+        __asm mov eax, this __asm push arg_0 __asm call _addr
+        }
+        void SetPrimaryCulture(clausewitz::fixed_point<int64_t,48,15> arg_0)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x139380;
+        __asm mov eax, this __asm push arg_0 __asm call _addr
+        }
+        void SetRelations(const CCountryTag & tag,clausewitz::CFixedPoint n)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1179e0;
+        __asm mov edi, this __asm mov edx, tag __asm push n __asm call _addr
+        }
+        void SetResearchPoints(clausewitz::CFixedPoint n)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x1366f0;
+        __asm mov esi, this __asm push n __asm call _addr
+        }
+        bool TakeLoan(bool arg_0,clausewitz::fixed_point<int64_t,48,15> amount)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x122910;
+        __asm push amount __asm push arg_0 __asm push this __asm call _addr
+        }
+        clausewitz::fixed_point<int64_t,48,15> TakeLoanFrom(CCountryTag tag,clausewitz::fixed_point<int64_t,48,15> amount)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x122820;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov esi, ret_val_ptr __asm push amount __asm push tag __asm push this __asm call _addr
+        return ret_val;
+        }
+        bool TryTakeLoanFrom(CCountryTag tag,clausewitz::fixed_point<int64_t,48,15> amount)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x123400;
+        __asm push amount __asm push tag __asm push this __asm call _addr
+        }
+        void Westernize()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x142370;
+        __asm push this __asm call _addr
+        }
+        clausewitz::fixed_point<int64_t,48,15> WithdrawFromTreasury(int expense_type,clausewitz::fixed_point<int64_t,48,15> amount)
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0x142370;
+        clausewitz::fixed_point<int64_t,48,15> ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov edi, ret_val_ptr __asm mov eax, this __asm push amount __asm push expense_type __asm call _addr
+        return ret_val;
+        }
         clausewitz::CFixedPoint daily_research_points()
         {
         const uintptr_t _addr = memory::Map::base_addr + 0x138150;
@@ -428,6 +579,14 @@ namespace smedley::v2
         const uintptr_t _addr = memory::Map::base_addr + 0x123880;
         __asm push this __asm call _addr
         }
+        sstd::string name()
+        {
+        const uintptr_t _addr = memory::Map::base_addr + 0xf97a0;
+        sstd::string ret_val;
+        auto ret_val_ptr = &ret_val;
+        __asm mov ecx, ret_val_ptr __asm mov eax, this __asm call _addr
+        return ret_val;
+        }
         clausewitz::fixed_point<int64_t,48,15> tariff_efficiency()
         {
         const uintptr_t _addr = memory::Map::base_addr + 0x1339d0;
@@ -437,40 +596,6 @@ namespace smedley::v2
         return ret_val;
         }
         //[[[end]]]
-
-        inline DEFINE_MEMBER_FN_3(DelayEvent, void, 0x00140a70, CEvent *, event, CEventScope *, scope, int, days);
-        inline DEFINE_MEMBER_FN_2(DiscoverInvention, void, 0x00102090, CInvention *, invention, bool, add_to_news);
-        inline DEFINE_MEMBER_FN_EDI_0(DismantleSphere, void, 0x001340a0);
-
-        static constexpr uintptr_t GetMovement_address_0 = 0x00140e40;
-        inline DEFINE_MEMBER_FN_EDX_EDI_0_BASE(GetMovement, CPopMovement *, GetMovement_address_0, CIssue *, issue);
-        static constexpr uintptr_t GetMovement_address_1 = 0x00140e80;
-        inline DEFINE_MEMBER_FN_EDX_1_BASE(GetMovement, CPopMovement *, GetMovement_address_1, const CCountryTag &, country_tag);
-
-        inline DEFINE_MEMBER_FN_ESI_EDX_0(HasStaticModifier, bool, 0x001068b0, CStaticModifier *, modifier);
-        inline DEFINE_MEMBER_FN_EDI_0(NationalizeFactories, void, 0x001441f0);
-        inline DEFINE_MEMBER_FN_THISCALL_2(PayBackLoan, void, 0x001238d0, bool, param_1, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), amount);
-        inline DEFINE_MEMBER_FN_0(RearrangeUpperHouse, void, 0x00127d10);
-        inline DEFINE_MEMBER_FN_0(RefreshSubUnits, void, 0x00127d10);
-        /// RemoveDebts? 
-        inline DEFINE_MEMBER_FN_0(Unk_00111340, void, 0x00111340);
-        /// doesn't seem to work
-        inline DEFINE_MEMBER_FN_EDI_2(RemoveFoW, void, 0x0011b350, int, months, CCountryTag, target);
-        inline DEFINE_MEMBER_FN_1_EDI(RemoveFromSphere, void, 0x00133f20, const CCountryTag &, target);
-        inline DEFINE_MEMBER_FN_THISCALL_0(SaveColor, void, 0x0011b870);
-        inline DEFINE_MEMBER_FN_EAX_1(SetLeadership, void, 0x00139380, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), val);
-        inline DEFINE_MEMBER_FN_EDI_2(SetPrimaryCulture, void, 0x00122430, CCulture *, culture, bool, add_to_history);
-        inline DEFINE_MEMBER_FN_EDI_EDX_1(SetRelations, void, 0x001179e0, const CCountryTag &, country_tag, clausewitz::CFixedPoint, n);
-        inline DEFINE_MEMBER_FN_ESI_1(SetResearchPoints, void, 0x001366f0, clausewitz::CFixedPoint, n);
-        /// @param param_1 show dialog?
-        /// @returns if the loan was taken successfully?
-        inline DEFINE_MEMBER_FN_2(TakeLoan, bool, 0x00122910, bool, param_1, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), amount);
-        inline DEFINE_MEMBER_FN_2_RET_ESI(TakeLoanFrom, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), 0x00122820, const CCountryTag &, creditor_tag, TYPE_IDENTITY((clausewitz::fixed_point<int64_t,48,15>)), amount);
-        inline DEFINE_MEMBER_FN_0_THIS_IN_STACK(UpdateCapital, void, 0x0010e540);
-        //inline DEFINE_MEMBER_FN_ESI_0(UpdateOverlord, void, 0x00119920);
-        inline DEFINE_MEMBER_FN_0(Westernize, void, 0x00142370);
-
-        DEFINE_MEMBER_FN_EAX_0_RET_ECX(name, sstd::string, 0x000f97a0);
 
         inline bool exists() const { return _owned_provinces.size() > 0; }
     };
