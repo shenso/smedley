@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['monthlyupdate_0',['MonthlyUpdate',['../d3/d71/classsmedley_1_1v2_1_1_c_country.html#aad1f149b611ecc56cf7f573a3790688b',1,'smedley::v2::CCountry']]]
+  ['onload_0',['OnLoad',['../d6/dbe/classsmedley_1_1_plugin.html#a09c3b363d7382b79d9a39b016fa98afc',1,'smedley::Plugin']]],
+  ['onunload_1',['OnUnload',['../d6/dbe/classsmedley_1_1_plugin.html#a7b7de14a6eeca60a8ae9b29118c0db88',1,'smedley::Plugin']]]
 ];

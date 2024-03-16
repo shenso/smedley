@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['pair_0',['pair',['../d4/d6c/classsmedley_1_1sstd_1_1pair.html',1,'smedley::sstd']]],
-  ['physfs_5ffile_1',['PHYSFS_File',['../d1/d3a/structsmedley_1_1clausewitz_1_1_p_h_y_s_f_s___file.html',1,'smedley::clausewitz']]],
-  ['plugin_2',['Plugin',['../d6/dbe/classsmedley_1_1_plugin.html',1,'smedley::Plugin'],['../d6/dbe/classsmedley_1_1_plugin.html#a3397d0f6645dabadc94352fc9399b188',1,'smedley::Plugin::Plugin()']]],
-  ['plugindefinition_3',['PluginDefinition',['../d3/da5/structsmedley_1_1_plugin_definition.html',1,'smedley']]],
-  ['pluginloader_4',['PluginLoader',['../d7/d47/classsmedley_1_1_plugin_loader.html',1,'smedley']]],
-  ['pluginmodule_5',['PluginModule',['../d9/dcf/structsmedley_1_1_plugin_module.html',1,'smedley']]]
+  ['read_0',['Read',['../dd/d03/classsmedley_1_1clausewitz_1_1_c_persistent.html#a587ecfc98633d1d9f8290f3fd02f5900',1,'smedley::clausewitz::CPersistent']]],
+  ['readmember_1',['ReadMember',['../dd/d03/classsmedley_1_1clausewitz_1_1_c_persistent.html#a466d2dbd4597474eb399180890a3eae7',1,'smedley::clausewitz::CPersistent']]],
+  ['register_2',['Register',['../d0/d68/classsmedley_1_1_event_registry.html#a74669279c4248c96e8a39cc02c4403f2',1,'smedley::EventRegistry']]],
+  ['removeeventhandler_3',['RemoveEventHandler',['../d6/dbe/classsmedley_1_1_plugin.html#a1d9934b8a0c2db0f6c6027c190232722',1,'smedley::Plugin']]],
+  ['reserve_4',['reserve',['../d1/da5/classsmedley_1_1sstd_1_1vector.html#a5e85fe201e3d7f71d7913a326c50a7bc',1,'smedley::sstd::vector']]]
 ];

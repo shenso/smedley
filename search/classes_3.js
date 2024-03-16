@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['dependency_0',['Dependency',['../d1/d61/structsmedley_1_1_plugin_definition_1_1_dependency.html',1,'smedley::PluginDefinition']]]
+  ['event_0',['Event',['../d1/d97/classsmedley_1_1_event.html',1,'smedley']]],
+  ['eventregistry_1',['EventRegistry',['../d0/d68/classsmedley_1_1_event_registry.html',1,'smedley']]]
 ];

@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['id_0',['id',['../df/d79/classsmedley_1_1clausewitz_1_1_c_i_d.html#af01a7c85334101dcb46248759acabf1e',1,'smedley::clausewitz::CID']]],
-  ['initpostread_1',['InitPostRead',['../dd/d03/classsmedley_1_1clausewitz_1_1_c_persistent.html#a5540bea9f78c49a009378b5583a6f30c',1,'smedley::clausewitz::CPersistent']]],
-  ['installhook_2',['InstallHook',['../d2/d99/classsmedley_1_1events_1_1_console_cmd_manager_init_event.html#a1122cf004637bd3d5e2e6747b184ad34',1,'smedley::events::ConsoleCmdManagerInitEvent']]],
-  ['is_5fcancelled_3',['is_cancelled',['../d1/d97/classsmedley_1_1_event.html#a582cc870665048b5bc0075a26931bc70',1,'smedley::Event']]]
+  ['notify_0',['Notify',['../d0/d68/classsmedley_1_1_event_registry.html#aec750cf59110a7cc9778cff4aa9c7121',1,'smedley::EventRegistry']]]
 ];

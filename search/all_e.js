@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['read_0',['Read',['../dd/d03/classsmedley_1_1clausewitz_1_1_c_persistent.html#a587ecfc98633d1d9f8290f3fd02f5900',1,'smedley::clausewitz::CPersistent']]],
-  ['readmember_1',['ReadMember',['../dd/d03/classsmedley_1_1clausewitz_1_1_c_persistent.html#a466d2dbd4597474eb399180890a3eae7',1,'smedley::clausewitz::CPersistent']]],
-  ['register_2',['Register',['../d0/d68/classsmedley_1_1_event_registry.html#a74669279c4248c96e8a39cc02c4403f2',1,'smedley::EventRegistry']]],
-  ['removeeventhandler_3',['RemoveEventHandler',['../d6/dbe/classsmedley_1_1_plugin.html#a1d9934b8a0c2db0f6c6027c190232722',1,'smedley::Plugin']]],
-  ['removefow_4',['RemoveFoW',['../d3/d71/classsmedley_1_1v2_1_1_c_country.html#ace98b625e9c3ec33200a0a4e2b87a521',1,'smedley::v2::CCountry']]],
-  ['reserve_5',['reserve',['../d1/da5/classsmedley_1_1sstd_1_1vector.html#a5e85fe201e3d7f71d7913a326c50a7bc',1,'smedley::sstd::vector']]]
+  ['scommanddata_0',['SCommandData',['../d8/d50/structsmedley_1_1v2_1_1_c_console_cmd_1_1_s_command_data.html',1,'smedley::v2::CConsoleCmd']]],
+  ['sign_20i_20f_1',['| sign |  I  |  F  |',['../d3/dbc/classsmedley_1_1clausewitz_1_1fixed__point.html#autotoc_md1',1,'']]],
+  ['sresult_2',['SResult',['../db/d8c/structsmedley_1_1v2_1_1_c_console_cmd_1_1_s_result.html',1,'smedley::v2::CConsoleCmd']]],
+  ['sternarytrait_3',['STernaryTrait',['../d0/dfe/structsmedley_1_1clausewitz_1_1_s_ternary_trait.html',1,'smedley::clausewitz']]]
 ];
